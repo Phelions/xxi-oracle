@@ -2,17 +2,15 @@
   "schemaVersion": 2,
   "dockerfileLines": [
     "FROM library/python:3.10.8-alpine3.16",
-    "RUN apk update && apk upgrade && apk add --no-cache make g++ bash git openssh postgresql-dev libaio curl",
-    "RUN mkdir -p /opt/oracle",
+    "RUN apk update && apk upgrade && apk add --no-cache make g++ bash git openssh libaio libaio1 postgresql-dev curl",
     "RUN mkdir -p /usr/src/app",
     "WORKDIR /usr/src/app",
-    "COPY ./utils/ /usr/src/utils",
     "COPY ./proyecto/ /usr/src/app",
-    "COPY ./instantclient_19_17/ /opt/oracle",
-    "CMD sh /usr/src/utils/ora.sh",
-    "RUN export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_17:$LD_LIBRARY_PATH",
-    "RUN export PATH=/opt/oracle/instantclient_19_17:$PATH",
     "RUN pip install -r requirements.txt",
+    "COPY ./utils/ /usr/src/utils",
+    "WORKDIR /opt",
+    "ADD ./oracle-instantclient19.10.deb /opt",
+    "RUN dpkg -i oracle-instantclient19.10.deb",
     "EXPOSE 80",
     "CMD sh /usr/src/utils/run.sh"
   ]
