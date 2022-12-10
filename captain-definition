@@ -8,7 +8,7 @@
     "WORKDIR /usr/src/app",
     "COPY ./proyecto/ /usr/src/app",
     "COPY ./instantclient_19_17/ /opt/oracle",
-    "RUN 'echo /opt/oracle/instantclient_19_17> /etc/ld.so.conf.d/oracle-instantclient.conf' ",
+    "RUN sudo sh -c 'echo /opt/oracle/instantclient_19_17> /etc/ld.so.conf.d/oracle-instantclient.conf' ",
     "RUN ldconfig",
     "RUN export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_17:$LD_LIBRARY_PATH",
     "RUN export PATH=/opt/oracle/instantclient_19_17:$PATH",
