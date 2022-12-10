@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import  LoginForm, SignupForm
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
-from axes.decorators import axes_dispatch
+# from axes.decorators import axes_dispatch
 # Create your views here.
 
-@axes_dispatch
+# @axes_dispatch
 def login(request):
     form = LoginForm(request.POST or None)
     msg=None
