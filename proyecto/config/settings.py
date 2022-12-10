@@ -34,7 +34,7 @@ LOCAL_APPS = [
 ]
 
 THIRD_APPS = [
-    'axes',
+    # 'axes',
     'crispy_forms',
     'crispy_bootstrap5',
 ]
@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'axes.middleware.AxesMiddleware',
+    # 'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -100,10 +100,10 @@ PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher',
 )
 
-AUTHENTICATION_BACKENDS = [
-   'axes.backends.AxesBackend', # Axes must be first
-   'django.contrib.auth.backends.ModelBackend',
-]
+# AUTHENTICATION_BACKENDS = [
+#    'axes.backends.AxesBackend', # Axes must be first
+#    'django.contrib.auth.backends.ModelBackend',
+# ]
 
 # Database
 
@@ -144,11 +144,11 @@ ACCOUNT_UNIQUE_USERNAME = False
 ACCOUNT_USERNAME_REQUIRED = False
 
 
-AXES_FAILURE_LIMIT: 3
-AXES_COOLOFF_TIME: timedelta(minutes=5)
-AXES_RESET_ON_SUCCESS = True
+# AXES_FAILURE_LIMIT: 3
+# AXES_COOLOFF_TIME: timedelta(minutes=5)
+# AXES_RESET_ON_SUCCESS = True
 
-AXES_LOCKOUT_CALLABLE = 'account.views.lockout'
+# AXES_LOCKOUT_CALLABLE = 'account.views.lockout'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
