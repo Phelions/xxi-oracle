@@ -1,0 +1,63 @@
+{% extends 'dashboard/client/base.html' %}
+
+{% load static %}
+
+
+
+
+{% load crispy_forms_tags %}
+
+{% block client-contenido %}
+<section>
+    <div class="container">
+        <div class="card mx-auto">
+            <form action="" method="POST" class="row g-3">
+                {% csrf_token %}
+                {% if msg %}
+                <div class="alert alert-danger" role="alert">
+                    <h5>{{ msg }}</h5>
+                </div>
+                {% endif %}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container ">
+                            <div class="elem-group inlined">
+                                {% if user.is_authenticated %}
+                                <input type="text" id="id_usuario" name="id_usuario"
+                                        value="{{ user.id_usuario }}" hidden>
+                                <label for="">Rut</label>
+                                <br>
+                                    <p class="h5">{{ user.rut }}</p>
+                                <br>
+                                {% endif %}
+                                <label for="checkin-date">Fecha y Hora</label>
+                                <br>
+                                <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
+                            </div>
+                            <div class="elem-group ">
+                                <label for="room-selection">Seleccione la mesa disponible</label>
+                                <br>
+                                <select id="id_mesa" name="id_mesa" class="w-25" required>
+                                    <option value="">Seleccionar</option>
+                                    {% for m in mesas %}
+                                        {% if m.data.2 == "Disponible"%}
+                                            <option value="{{ m.data.0 }}">Mesa {{ m.data.0 }} - {{ m.data.2 }} - capacidad: {{ m.data.3}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between btn-group" role="group">
+                            <button class=" btn   btn-success" type="submit">Reservar</button>
+                            <a type="button" href=" {% url 'reservas' %} " class="btn btn-danger">Cancelar</a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock client-contenido %}

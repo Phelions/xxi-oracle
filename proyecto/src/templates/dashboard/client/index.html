@@ -1,0 +1,54 @@
+{% extends 'dashboard/client/base.html' %}
+{% load static %}
+
+{% block client-css %}
+<link rel="stylesheet" href="{% static '/client/css/menu.css' %}">
+
+{% endblock client-css %}
+
+{% block client-contenido %}
+<section>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <a name="" id="" class="btn btn-success" href=" {% url 'crear_reserva' %} " role="button">Crear Reserva</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-light">
+                        <thead>
+                            <tr>
+                                <th scope="col">Rut</th>
+                                <th scope="col">N° reserva</th>
+                                <th scope="col">N° mesa</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Fecha y Hora</th>
+                                <th scope="col">Garzon</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for l in listarreservas %}
+                            <tr>
+                                <td>{{ l.data.0 }}</td>
+                                <td>{{ l.data.1 }}</td>
+                                <td>{{ l.data.2 }}</td>
+                                <td>{{ l.data.3 }}</td>
+                                <td>{{ l.data.4 }}</td>
+                                <td>{{ l.data.5 }}</td>
+                                <td class="d-flex justify-content-between btn-group" role="group"> 
+                                    <a name="" id="" class="btn btn-info " href="#" role="button">Modificar</a> 
+                                    <a name="" id="" class="btn btn-danger" href="#" role="button">Eliminar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>  
+            </div>
+            <div class="card-footer text-muted">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock client-contenido %}

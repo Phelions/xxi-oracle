@@ -1,0 +1,46 @@
+{% extends 'dashboard/manager/base.html' %}
+{% block admin-contenido %}
+
+<section>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <a name="" id="" class="btn btn-success" href="{% url 'crear' %}" role="button">Agregar Mesa</a>
+            </div>
+            <div class="card-body">
+        
+                <div class="table-responsive">
+                    <table class="table table-light">
+                        <thead>
+                            <tr>
+                                <th scope="col">N° Mesa</th>
+                                <th scope="col">Empleado</th>
+                                <th scope="col">Estado Mesa</th>
+                                <th scope="col">capacidad</th>
+                                <th scope="col" class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for m in mesas %}
+                            <tr>
+                                <td>{{ m.0 }}</td> 
+                                <td>{{ m.1 }}</td> 
+                                <td>{{ m.2 }}</td> 
+                                <td>{{ m.3 }}</td> 
+                                <td  class="d-flex justify-content-between btn-group" role="group"> 
+                                    <a name="" id="" class="btn btn-info" href="  " role="button">Modificar</a> 
+                                    <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_mesa' m.0 %}" role="button">Eliminar</a></td>
+                                </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>  
+            </div>
+            <div class="card-footer text-muted">
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock admin-contenido %}

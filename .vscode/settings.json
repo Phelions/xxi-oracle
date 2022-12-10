@@ -1,0 +1,18 @@
+{
+    "python.analysis.typeCheckingMode": "off",
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "postgres.restaurante-xxi.live",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "database": "restaurant",
+            "name": "restaurant",
+            "username": "dbadmin",
+            "password": "dbpassword"
+        }
+    ],
+    "python.linting.enabled": false,
+    "python.linting.pylintEnabled": true
+}
