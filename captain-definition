@@ -6,13 +6,13 @@
     "RUN mkdir -p /opt/oracle",
     "RUN mkdir -p /usr/src/app",
     "WORKDIR /usr/src/app",
+    "COPY ./utils/ /usr/src/utils",
     "COPY ./proyecto/ /usr/src/app",
     "COPY ./instantclient_19_17/ /opt/oracle",
-    "RUN ln -s /opt/oracle/instantclient_19_17/libclntsh.so.19.1 /opt/oracle/instantclient_19_17/libclntsh.so",
+    "CMD sh /usr/src/utils/ora.sh",
     "RUN export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_17:$LD_LIBRARY_PATH",
     "RUN export PATH=/opt/oracle/instantclient_19_17:$PATH",
     "RUN pip install -r requirements.txt",
-    "COPY ./utils/ /usr/src/utils",
     "EXPOSE 80",
     "CMD sh /usr/src/utils/run.sh"
   ]
